@@ -1,63 +1,110 @@
 ---
 import { Image } from "astro:assets";
-import blogSS from "../assets/blogSS.png"
-import chartSS from "../assets/chartApp.png"
-import toDoSS from "../assets/ToDoList.png"
-import compoundSS from "../assets/compound.png"
-import budgetSS from "../assets/budgetApp.png"
-import weatherApp from "../assets/weatherApp.png"
-
+import blogSS from "../assets/blogSS.png";
+import chartSS from "../assets/chartApp.png";
+import toDoSS from "../assets/ToDoList.png";
+import compoundSS from "../assets/compound.png";
+import budgetSS from "../assets/budgetApp.png";
+import weatherApp from "../assets/weatherApp.png";
 ---
 
-<div id="portfolio">  
-  <div class="md:px-24 px-8 ">
+<div id="portfolio">
+  <div class="md:px-24 px-8">
     <h3 class="text-5xl font-extrabold">My Projects</h3>
     <div class="project-list">
       <div class="project">
-        <a aria-label="Link to blog app" href="https://github.com/eslang50/blogApp" target="_blank">
+        <a
+          aria-label="Link to blog app"
+          href="https://github.com/eslang50/blogApp"
+          target="_blank"
+        >
           <div class="image-container">
             <Image src={blogSS} loading="lazy" alt="Blog app screenshot" />
-            <div class="overlay-text">Blog app built with MongoDB, Express, React, and Node.js</div>
+            <div class="overlay-text">
+              Blog app built with MongoDB, Express, React, and Node.js
+            </div>
           </div>
         </a>
       </div>
       <div class="project">
-        <a aria-label="Link to chart app" href="https://github.com/eslang50/chart-app" target="_blank">
+        <a
+          aria-label="Link to chart app"
+          href="https://github.com/eslang50/chart-app"
+          target="_blank"
+        >
           <div class="image-container">
-            <Image src={chartSS}loading="lazy" alt="Chart app screenshot" />
-            <div class="overlay-text">Chart visualization app built with Next.js, Django, and Docker</div>
+            <Image src={chartSS} loading="lazy" alt="Chart app screenshot" />
+            <div class="overlay-text">
+              Chart visualization app built with Next.js, Django, and Docker
+            </div>
           </div>
         </a>
       </div>
       <div class="project">
-        <a aria-label="Link to to do list app" href="https://eslang50.github.io/Todo-List/" target="_blank">
+        <a
+          aria-label="Link to to do list app"
+          href="https://eslang50.github.io/Todo-List/"
+          target="_blank"
+        >
           <div class="image-container">
-            <Image src={toDoSS} loading="lazy" alt="To do list app screenshot" />
-            <div class="overlay-text">To do list app built with vanilla js, html, css</div>
+            <Image
+              src={toDoSS}
+              loading="lazy"
+              alt="To do list app screenshot"
+            />
+            <div class="overlay-text">
+              To do list app built with vanilla js, html, css
+            </div>
           </div>
         </a>
       </div>
       <div class="project">
-        <a aria-label="Link to compound app" href="https://compound-sign-up.vercel.app/" target="_blank">
+        <a
+          aria-label="Link to compound app"
+          href="https://compound-sign-up.vercel.app/"
+          target="_blank"
+        >
           <div class="image-container">
-            <Image src={compoundSS} loading="lazy" alt="Compound app screenshot" />
-            <div class="overlay-text">Investing app built with React, html, css</div>
+            <Image
+              src={compoundSS}
+              loading="lazy"
+              alt="Compound app screenshot"
+            />
+            <div class="overlay-text">
+              Investing app built with React, html, css
+            </div>
           </div>
         </a>
       </div>
       <div class="project">
-        <a aria-label="Link to budget app" href="https://github.com/eslang50/BudgetApp" target="_blank">
+        <a
+          aria-label="Link to budget app"
+          href="https://github.com/eslang50/BudgetApp"
+          target="_blank"
+        >
           <div class="image-container">
             <Image src={budgetSS} loading="lazy" alt="Budget app screenshot" />
-            <div class="overlay-text">Budget app built with Java and JavaFX</div>
+            <div class="overlay-text">
+              Budget app built with Java and JavaFX
+            </div>
           </div>
         </a>
       </div>
       <div class="project">
-        <a aria-label="Link to weather app" href="https://eslang50.github.io/Weather-App/" target="_blank">
+        <a
+          aria-label="Link to weather app"
+          href="https://eslang50.github.io/Weather-App/"
+          target="_blank"
+        >
           <div class="image-container">
-            <Image src={weatherApp}loading="lazy" alt="Weather app screenshot" />
-            <div class="overlay-text">Weather app built with vanilla js, html, css, and OpenWeather API</div>
+            <Image
+              src={weatherApp}
+              loading="lazy"
+              alt="Weather app screenshot"
+            />
+            <div class="overlay-text">
+              Weather app built with vanilla js, html, css, and OpenWeather API
+            </div>
           </div>
         </a>
       </div>
@@ -65,68 +112,64 @@ import weatherApp from "../assets/weatherApp.png"
   </div>
 </div>
 
-
 <style>
+  #portfolio {
+    padding: 40px 0;
+    padding-top: 20px;
+  }
 
-#portfolio {
-  padding: 40px 0;
-  padding-top: 20px;
-}
+  .project-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-top: 20px;
+  }
 
-.project-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 40px;
-  margin-top: 20px;
-}
+  .project {
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+  }
 
-.project {
-  border-radius: 10px;
-  position: relative;
-  overflow: hidden;
-}
+  .project img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    object-position: top;
+  }
 
-.project img{
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 10px;
-  display: block;
-  object-position: top;
-}
+  .overlay-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-weight: 800;
+    font-size: 2rem;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 10px;
+  }
 
+  .image-container:hover .overlay-text {
+    opacity: 1;
+  }
 
-.overlay-text {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  font-weight: 800;
-  font-size: 2rem;
-  text-align: center;
-  opacity: 0; 
-  transition: opacity 0.3s ease;
-  border-radius: 10px;
-}
+  .project {
+    transition: transform 0.75s ease-in-out;
+  }
 
-.image-container:hover .overlay-text {
-  opacity: 1;
-}
-
-.project {
-  transition: transform 0.75s ease-in-out;
-}
-
-.project:hover {
-  cursor: pointer;
-  opacity: .9;
-  transform: scale(1.1);
-}
-
+  .project:hover {
+    cursor: pointer;
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
 </style>
