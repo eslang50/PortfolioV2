@@ -1,0 +1,198 @@
+---
+import { Image } from "astro:assets";
+import pfp from "../assets/profile.jpg";
+---
+
+<div id="about">
+  <div class="md:px-24 px-8">
+    <div class="row">
+      <div class="md:basis-1/3 basis-full">
+        <Image alt="profile" src={pfp} class="rounded-lg w-full " />
+      </div>
+      <div class="md:basis-3/5  basis-full">
+        <h2 class="sub-title">About Me</h2>
+        <p id="about-me">
+          Hi! My name is Ethan Liu and I am currently a master's student at
+          Northeastern studying Software Engineering. As a kid, I loved the
+          process of building new things and seeing creations to completion.
+          From making origami during homeroom of elementary school to building
+          software apps on campus, I hope to bring my skills to wherever I land
+          in the future!
+        </p>
+        <div class="tab-titles">
+          <p class="tab-links active-link" data-tab="skills">Skills</p>
+          <p class="tab-links" data-tab="experience">Experience</p>
+          <p class="tab-links" data-tab="education">Education</p>
+        </div>
+        <div class="tab-contents active-tab" id="skills">
+          <ul>
+            <li>Full-Stack Development</li>
+            <li>Data Visualization</li>
+            <li>Natural Language Processing (NLP)</li>
+            <li>Unit Testing</li>
+            <li>Version Control with Git</li>
+            <li>Continuous Integration/Continuous Deployment (CI/CD)</li>
+            <li>Agile Methodologies</li>
+            <li>Accessibility in Web Development</li>
+            <li>Cloud Platform Services</li>
+          </ul>
+        </div>
+        <div class="tab-contents" id="experience">
+          <ul>
+            <li>
+              <span>2024</span>
+              <br /> Software Engineer Intern at Hologic
+            </li>
+            <li><span>2023</span> <br /> Software Engineer Intern at UKG</li>
+            <li><span>2023</span> <br /> Software Engineer Intern at Hudl</li>
+            <li>
+              <span>2022</span>
+              <br /> Risk Management Coop at Charles River Development
+            </li>
+            <li>
+              <span>2021</span>
+              <br /> Researcher at Northeastern University
+            </li>
+            <li>
+              <span>2018</span>
+              <br /> Community Relations Intern at Eversource Energy
+            </li>
+          </ul>
+        </div>
+        <div class="tab-contents" id="education">
+          <ul>
+            <li>
+              <span>2024 - 2025</span>
+              <br /> Northeastern University - Master of Science in Software Engineering
+            </li>
+            <li>
+              <span>2020 - 2024</span>
+              <br /> Northeastern University - Bachelor of Science in Computer Engineering
+            </li>
+            <li>
+              <span>2014 - 2020</span>
+              <br /> Boston Latin School - High school diploma
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #about {
+    color: #ababab;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .about-col-1 {
+    flex-basis: 35%;
+  }
+
+  .about-col-2 {
+    flex-basis: 60%;
+  }
+
+  h2 {
+    font-size: 50px;
+    font-weight: 600;
+    color: white;
+  }
+
+  #about-me {
+    line-height: 22px;
+  }
+
+  .tab-titles {
+    display: flex;
+    margin: 20px 0 20px;
+  }
+
+  .tab-links {
+    margin-right: 50px;
+    font-size: 22px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .tab-links::after {
+    content: "";
+    width: 0;
+    height: 3px;
+    background: #ff004f;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: 0.5s;
+  }
+
+  .tab-links.active-link::after {
+    width: 50%;
+  }
+
+  .tab-contents ul li {
+    list-style: none;
+    margin: 10px 0;
+    font-size: 18px;
+  }
+
+  .tab-contents ul li span {
+    color: #ff004f;
+    font-size: 18px;
+  }
+
+  .tab-contents {
+    display: none;
+  }
+
+  .tab-contents.active-tab {
+    display: block;
+  }
+</style>
+
+<script>
+  const tabLinks = document.querySelectorAll(
+    ".tab-links"
+  ) as NodeListOf<HTMLElement>;
+  const tabContents = document.querySelectorAll(
+    ".tab-contents"
+  ) as NodeListOf<HTMLElement>;
+
+  function opentab(tabName: string) {
+    tabLinks.forEach((link) => {
+      link.classList.remove("active-link");
+    });
+    tabContents.forEach((content) => {
+      content.classList.remove("active-tab");
+    });
+
+    const activeLink = Array.from(tabLinks).find(
+      (link) => link.getAttribute("data-tab") === tabName
+    );
+    if (activeLink) {
+      activeLink.classList.add("active-link");
+    }
+
+    const tabContent = document.getElementById(tabName);
+    if (tabContent) {
+      tabContent.classList.add("active-tab");
+    } else {
+      console.error(`Element with id "${tabName}" not found.`);
+    }
+  }
+
+  tabLinks.forEach((link) => {
+    link.addEventListener("click", () =>
+      opentab(link.getAttribute("data-tab") || "")
+    );
+  });
+
+  opentab("skills");
+</script>

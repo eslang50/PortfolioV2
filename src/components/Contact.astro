@@ -1,0 +1,198 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div id="contact">
+  <div class="md:px-24 md:sm:flex px-8">
+    <div class="contact-left">
+      <h4 class="text-5xl font-extrabold">Contact Me</h4>
+      <p class="flex">
+        <Icon name="send" class="contact-icon" />
+        ethanliu50@gmail.com
+      </p>
+      <p class="flex">
+        <Icon name="phone" class="contact-icon" />
+        857-217-2467
+      </p>
+      <div class="social-icons">
+        <a
+          aria-label="Link to ethan's github"
+          href="https://github.com/eslang50"
+          target="_blank"
+        >
+          <Icon name="github" />
+        </a>
+        <a
+          aria-label="Link to ethan's linkedin"
+          href="https://www.linkedin.com/in/ethanliu50/"
+          target="_blank"
+        >
+          <Icon name="linkedIn" />
+        </a>
+        <a
+          aria-label="Link to ethan's instagram"
+          href="https://www.instagram.com/ethan.liuu/"
+          target="_blank"
+        >
+          <Icon name="instagram" />
+        </a>
+      </div>
+      <a
+        href="./documents/Ethan_Liu_Resume.pdf"
+        download="Ethan_Liu_Resume.pdf"
+        class="btn btn2"
+        target="_blank"
+        rel="noopener noreferrer">Download CV</a
+      >
+    </div>
+    <div class="contact-right">
+      <form name="submit-to-google-sheet">
+        <label for="name">
+          <input
+            type="text"
+            name="Name"
+            id="name"
+            placeholder="Your Name"
+            required
+          />
+        </label>
+        <label for="email">
+          <input
+            type="email"
+            name="Email"
+            id="email"
+            placeholder="Your Email"
+            required
+          />
+        </label>
+        <label for="message">
+          <textarea
+            name="Message"
+            rows="6"
+            id="message"
+            placeholder="Type a message"></textarea>
+        </label>
+        <button id="submit-btn">Submit</button>
+      </form>
+      <span id="msg"></span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .contact-left {
+    flex-basis: 35%;
+  }
+
+  .contact-right {
+    flex-basis: 60%;
+  }
+
+  .contact-left p {
+    margin-top: 30px;
+  }
+
+  .contact-icon {
+    color: #ff004f;
+    margin-right: 15px;
+    font-size: 25px;
+  }
+
+  .social-icons {
+    margin-top: 30px;
+  }
+
+  .social-icons a {
+    text-decoration: none;
+    font-size: 30px;
+    margin-right: 15px;
+    color: #ababab;
+    display: inline-block;
+  }
+
+  .social-icons a:hover {
+    color: #ff004f;
+    transform: translateY(-5px);
+    cursor: pointer;
+    transition: 0.5s;
+  }
+
+  .btn {
+    display: inline-block;
+    background: #ff004f;
+    text-decoration: none;
+    padding: 14px 36px;
+    border-radius: 6px;
+    font-size: 18px;
+    color: #fff;
+    margin-top: 30px;
+  }
+
+  #submit-btn {
+    display: inline-block;
+    background: #ff004f;
+    text-decoration: none;
+    padding: 14px 36px;
+    font-size: 18px;
+    border-radius: 6px;
+    color: #fff;
+    outline: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn:hover,
+  #submit-btn:hover {
+    opacity: 0.8;
+  }
+
+  .contact-right form {
+    width: 100%;
+  }
+
+  form input,
+  form textarea {
+    width: 100%;
+    border: 0;
+    outline: none;
+    background-color: #262626;
+    padding: 15px;
+    margin: 15px 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 6px;
+    resize: none;
+  }
+</style>
+<script
+  is:inline
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+></script>
+<script is:inline type="text/javascript">
+  (function () {
+    emailjs.init({
+      publicKey: "DZLbeKkR5RDUgeMP8",
+    });
+  })();
+  const sendMailButton = document.getElementById("submit-btn");
+  sendMailButton.addEventListener("click", function (e) {
+    e.preventDefault();
+    let params = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      message: document.getElementById("message").value,
+    };
+    const serviceID = "service_yehbjnb";
+    const templateID = "template_3kfifhh";
+
+    emailjs
+      .send(serviceID, templateID, params)
+      .then((res) => {
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("message").value = "";
+      })
+      .catch((err) => console.error(err));
+  });
+</script>
